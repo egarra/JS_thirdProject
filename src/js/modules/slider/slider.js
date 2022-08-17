@@ -7,11 +7,13 @@ export default class Slider {
         activeClass = '',
         animated,
         autoplay,
-        buttonsInArray
+        buttonsInArray,
+        prevBtns = null,
+        nextBtns = null
     } = {}) {
 
         this.container = document.querySelector(container);
-        this.slides = this.container.children;
+        try{this.slides = this.container.children;}catch(e){}
         this.btns = document.querySelectorAll(btns),
         this.prev = document.querySelector(prev),
         this.next = document.querySelector(next),
@@ -19,6 +21,8 @@ export default class Slider {
         this.animated = animated,
         this.autoplay = autoplay,
         this.buttonsInArray = buttonsInArray,
-        this.slideIndex = 1;
+        this.slideIndex = 1,
+        this.prevBtns = document.querySelectorAll(prevBtns),
+        this.nextBtns = document.querySelectorAll(nextBtns);
     }
 }

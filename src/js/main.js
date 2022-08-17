@@ -2,11 +2,17 @@ import MainSlider from './modules/slider/slider-main';
 import VideoPlayer from './modules/playVideo';
 import MiniSlider from './modules/slider/slider-mini';
 import Difference from './modules/difference';
+import Form from './modules/form';
+import Accordeon from './modules/accordeon';
+import Download from './modules/download';
 
 
 window.addEventListener('DOMContentLoaded', () => {
     const slider = new MainSlider({container: '.page', btns: '.next'});
     slider.render();
+
+    const modulesPageSlider = new MainSlider({container: '.moduleapp', btns: '.next', prevBtns: '.prevmodule', nextBtns: '.nextmodule'});
+    modulesPageSlider.render();
 
     const showUpSlider = new MiniSlider({
         container: '.showup__content-slider',
@@ -36,8 +42,15 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     feedSlider.init();
 
-    const player = new VideoPlayer('.showup .play', '.overlay');
-    player.init();
+    new VideoPlayer('.showup .play', '.overlay').init();
+    new VideoPlayer('.module__video .play', '.overlay').init();
 
     new Difference('.officerold', '.officernew', '.officer__card-item').init();
+
+    new Accordeon('.plus__content').init();
+
+    new Download('.download').init();
+
+    const form = new Form('.form', 'assets/question.php');
+    form.init();
 });
